@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Github Portal</string>
+
+    <!-- Buttons -->
+    <string name="button_exit">Exit</string>
+    <string name="button_retry">Retry</string>
+
+    <!-- General errors -->
+    <string name="network_error_title">Connection error</string>
+    <string name="network_error_message">Something went wrong. Please, check your connection status.</string>
+
+    <string name="server_error_title">Server error</string>
+    <string name="server_error_message">Something went wrong with the server. Please, retry it again.</string>
+
+    <string name="parsing_error_title">Response error</string>
+    <string name="parsing_error_message">Something went wrong parsing the response. Please, retry it.</string>
+
+    <string name="unknown_error_title">Unexpected error</string>
+    <string name="unknown_error_message">An unexpected error happened. Please, restart the App.</string>
+    <string name="unknown_error_message_with_details">%s\n\n[ERROR: %s]</string>
+
+    <!-- Github repositories list fragment -->
+    <string name="repositories_list_empty_error_title">No repositories</string>
+    <string name="repositories_list_empty_error_message">There are no repositories. Please, exit the App.</string>
 </resources>
