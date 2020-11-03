@@ -5,13 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".ui.application.GithubPortalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubPortal.Splash">
-        <activity android:name=".GithubPortalActivity">
+        <activity android:name=".ui.githubrepositories.GithubPortalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

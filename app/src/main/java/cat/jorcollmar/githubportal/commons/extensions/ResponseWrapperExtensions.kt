@@ -1,4 +1,4 @@
-package cat.jorcollmar.githubportal.extensions
+package cat.jorcollmar.githubportal.commons.extensions
 
 import android.content.res.Resources
 import cat.jorcollmar.domain.commons.ResponseWrapper
@@ -10,20 +10,11 @@ fun <T> ResponseWrapper<T>.manageResponse(
     resources: Resources, retry: (() -> Unit)?
 ) = when (this) {
     is ResponseWrapper.Success -> Resource.Success(this.data)
-    is ResponseWrapper.EmptyRepositoriesListError ->
-        Resource.KnownError(wrapEmptyRepositoriesListError(resources, retry))
     is ResponseWrapper.NetworkError -> Resource.KnownError(wrapNetworkError(resources))
     is ResponseWrapper.ServerError -> Resource.KnownError(wrapServerError(resources, retry))
     is ResponseWrapper.ParsingError -> Resource.KnownError(wrapParsingError(resources, retry))
     is ResponseWrapper.UnknownError -> Resource.UnknownError(this.throwable)
 }
-
-private fun wrapEmptyRepositoriesListError(resources: Resources, retryCallback: (() -> Unit)?) =
-    ErrorWrapper(
-        resources.getString(R.string.repositories_list_empty_error_title),
-        resources.getString(R.string.repositories_list_empty_error_message),
-        retryCallback
-    )
 
 private fun wrapNetworkError(resources: Resources) =
     ErrorWrapper(

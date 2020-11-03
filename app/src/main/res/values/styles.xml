@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextTitle" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">@dimen/text_subtitle</item>
+        <item name="android:textColor">@color/purple_500</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CollapsedToolbarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>

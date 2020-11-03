@@ -79,9 +79,9 @@ object GithubApiFactory {
     interface GithubApi {
         @GET("search/repositories")
         suspend fun searchRepositories(
-            @Query("q") query: String = "",
+            @Query("q") language: String = "language:kotlin",
             @Query("sort") sort: String = "stars",
-            @Query("per_page") perPage: Int = 10,
+            @Query("per_page") perPage: Int = 20,
             @Query("page") page: Int = 1
         ): Response<GithubRepositoriesApiResult>
     }

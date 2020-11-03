@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/github_portal_nav_graph"
+    app:startDestination="@id/githubRepositoriesListFragment">
+
+    <fragment
+        android:id="@+id/githubRepositoriesListFragment"
+        android:name="cat.jorcollmar.githubportal.ui.githubrepositories.view.GithubRepositoriesListFragment"
+        android:label="@string/repositories_list_fragment_label"
+        tools:layout="@layout/fragment_github_repositories_list">
+        <action
+            android:id="@+id/action_RepositoriesListFragment_to_RepositoryDetailFragment"
+            app:destination="@+id/githubRepositoryDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/githubRepositoryDetailFragment"
+        android:name="cat.jorcollmar.githubportal.ui.githubrepositories.view.GithubRepositoryDetailFragment"
+        android:label="@string/repository_detail_fragment_label"
+        tools:layout="@layout/fragment_github_repository_detail" />
+</navigation>

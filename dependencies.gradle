@@ -22,4 +22,7 @@ ext {
 
     // Coroutines
     kotlin_coroutines_version = "1.4.0-M1"
+
+    // Image processor
+    picasso = '2.71828'
 }

@@ -10,6 +10,9 @@ buildscript {
         classpath "com.android.tools.build:gradle:4.1.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
+        // Navigation component sage args
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$androidx_navigation_version"
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

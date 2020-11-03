@@ -4,5 +4,7 @@ import cat.jorcollmar.domain.commons.ResponseWrapper
 import cat.jorcollmar.domain.repositories.model.GithubRepositoryModel
 
 interface RemoteGithubDataSource {
-    suspend fun getTrendingRepositories(): ResponseWrapper<List<GithubRepositoryModel>>
+    suspend fun getTrendingRepositories(
+        language: String, sort: String
+    ): ResponseWrapper<List<GithubRepositoryModel>>
 }

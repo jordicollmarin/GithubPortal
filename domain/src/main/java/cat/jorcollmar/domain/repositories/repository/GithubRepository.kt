@@ -6,7 +6,8 @@ import kotlinx.coroutines.withContext
 
 class GithubRepository(private val remoteGithubDataSource: RemoteGithubDataSource) {
 
-    suspend fun getTrendingRepositories() = withContext(Dispatchers.IO) {
-        remoteGithubDataSource.getTrendingRepositories()
-    }
+    suspend fun getTrendingRepositories(language: String, sort: String) =
+        withContext(Dispatchers.IO) {
+            remoteGithubDataSource.getTrendingRepositories(language, sort)
+        }
 }

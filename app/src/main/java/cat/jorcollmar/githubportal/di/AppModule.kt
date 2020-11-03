@@ -12,7 +12,9 @@ val appModule = module {
 }
 
 val appViewModelModule = module {
-    viewModel { GithubRepositoriesViewModel(get(), get()) }
+    viewModel {
+        GithubRepositoriesViewModel(get(), get())
+    }
 }
 
 val appApiModule = module {

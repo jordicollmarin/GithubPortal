@@ -1,7 +1,8 @@
-package cat.jorcollmar.githubportal
+package cat.jorcollmar.githubportal.ui.githubrepositories
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import cat.jorcollmar.githubportal.R
 import cat.jorcollmar.githubportal.databinding.ActivityGithubPortalBinding
 
 class GithubPortalActivity : AppCompatActivity() {
