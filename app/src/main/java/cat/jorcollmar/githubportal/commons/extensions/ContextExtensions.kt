@@ -61,25 +61,6 @@ fun Context.showErrorDialog(throwable: Throwable) {
     builder.show()
 }
 
-fun Context.showErrorDialog(message: String?) {
-    val builder = MaterialAlertDialogBuilder(this)
-        .setMessage(message)
-        .setPositiveButton(android.R.string.ok) { dialogInterface: DialogInterface, _: Int ->
-            dialogInterface.dismiss()
-        }
-    builder.show()
-}
-
-fun Context.showExitDialog(message: String?) {
-    val builder = MaterialAlertDialogBuilder(this)
-        .setMessage(message ?: getString(R.string.exit_message))
-        .setPositiveButton(android.R.string.ok) { dialogInterface: DialogInterface, _: Int ->
-            dialogInterface.dismiss()
-            exitApp()
-        }
-    builder.show()
-}
-
 private fun Context.exitApp() {
     val am: ActivityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
     am.appTasks[0].finishAndRemoveTask()
