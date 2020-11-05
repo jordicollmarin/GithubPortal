@@ -10,17 +10,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cat.jorcollmar.githubportal.R
-import cat.jorcollmar.githubportal.databinding.FragmentGithubRepositoryDetailBinding
 import cat.jorcollmar.githubportal.commons.extensions.kFormat
 import cat.jorcollmar.githubportal.commons.extensions.loadImageCenterCrop
+import cat.jorcollmar.githubportal.databinding.FragmentGithubRepositoryDetailBinding
 import cat.jorcollmar.githubportal.ui.customviews.InfoItem
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
-
 
 class GithubRepositoryDetailFragment : Fragment() {
     lateinit var binding: FragmentGithubRepositoryDetailBinding
-    private val viewModel: GithubRepositoriesViewModel by sharedViewModel()
+    val viewModel: GithubRepositoriesViewModel by sharedViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,53 +39,57 @@ class GithubRepositoryDetailFragment : Fragment() {
     }
 
     private fun setUpRepositoryDetails() {
-        with(viewModel.selectedRepository) {
-            binding.ctlRepositoryDetail.title = name
+        viewModel.selectedRepository?.let { repository ->
+            with(repository) {
+                binding.ctlRepositoryDetail.title = name
 
-            binding.imvRepositoryDetail.loadImageCenterCrop(Uri.parse(owner?.avatarUrl))
+                binding.imvRepositoryDetail.loadImageCenterCrop(Uri.parse(owner?.avatarUrl))
 
-            description?.let {
-                binding.lytContent.txvRepositoryDescription.text = it
-            } ?: run {
-                binding.lytContent.txvRepositoryDescription.visibility = View.GONE
-            }
+                description?.let {
+                    binding.lytContent.txvRepositoryDescription.text = it
+                } ?: run {
+                    binding.lytContent.txvRepositoryDescription.visibility = View.GONE
+                }
 
-            htmlUrl?.let {
-                binding.lytContent.txvRepositoryLink.text = it
-            } ?: run {
-                binding.lytContent.txvRepositoryLink.visibility = View.GONE
-            }
+                htmlUrl?.let {
+                    binding.lytContent.txvRepositoryLink.text = it
+                } ?: run {
+                    binding.lytContent.txvRepositoryLink.visibility = View.GONE
+                }
 
-            stargazersCount?.let {
-                binding.lytContent.txvRepositoryStargazers.text = it.kFormat()
-            } ?: run {
-                binding.lytContent.txvRepositoryStargazers.visibility = View.GONE
-            }
+                stargazersCount?.let {
+                    binding.lytContent.txvRepositoryStargazers.text = it.kFormat()
+                } ?: run {
+                    binding.lytContent.txvRepositoryStargazers.visibility = View.GONE
+                }
 
-            language?.let {
-                binding.lytContent.lytRepositoryInfoDetails.addView(InfoItem(requireContext()).apply {
-                    setUpItem(getString(R.string.repository_detail_language_label), it)
-                })
-            }
+                language?.let {
+                    binding.lytContent.lytRepositoryInfoDetails.addView(InfoItem(requireContext()).apply {
+                        setUpItem(getString(R.string.repository_detail_language_label), it)
+                    })
+                }
 
-            owner?.login?.let {
-                binding.lytContent.lytRepositoryInfoDetails.addView(InfoItem(requireContext()).apply {
-                    setUpItem(getString(R.string.repository_detail_owner_name_label), it)
-                })
-            }
+                owner?.login?.let {
+                    binding.lytContent.lytRepositoryInfoDetails.addView(InfoItem(requireContext()).apply {
+                        setUpItem(getString(R.string.repository_detail_owner_name_label), it)
+                    })
+                }
 
-            license?.name?.let {
-                binding.lytContent.lytRepositoryInfoDetails.addView(InfoItem(requireContext()).apply {
-                    setUpItem(getString(R.string.repository_detail_license_label), it)
-                })
+                license?.name?.let {
+                    binding.lytContent.lytRepositoryInfoDetails.addView(InfoItem(requireContext()).apply {
+                        setUpItem(getString(R.string.repository_detail_license_label), it)
+                    })
+                }
             }
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarRepositoryDetail)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).setSupportActionBar(binding.toolbarRepositoryDetail)
+            (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -96,6 +98,4 @@ class GithubRepositoryDetailFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
 }

@@ -43,7 +43,6 @@
     <string name="repository_detail_fragment_label">Github Repositories</string>
     <string name="repository_detail_owner_image_content_description">Owner avatar</string>
     <string name="repository_detail_owner_name_label">Owner</string>
-    <string name="repository_detail_link_label">Link</string>
     <string name="repository_detail_language_label">Language</string>
     <string name="repository_detail_license_label">License</string>
 </resources>

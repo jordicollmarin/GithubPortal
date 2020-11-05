@@ -24,8 +24,8 @@ class GithubRepositoriesViewModel(
     val repositoriesLoaded: Boolean
         get() = _repositoriesLoaded
 
-    private lateinit var _selectedRepository: GithubRepositoryModel
-    val selectedRepository: GithubRepositoryModel
+    private var _selectedRepository: GithubRepositoryModel? = null
+    val selectedRepository: GithubRepositoryModel?
         get() = _selectedRepository
 
     private var _selectedSortingOption: String = SORT_STARS

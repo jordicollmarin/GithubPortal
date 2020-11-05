@@ -14,7 +14,6 @@
             android:id="@+id/action_RepositoriesListFragment_to_RepositoryDetailFragment"
             app:destination="@+id/githubRepositoryDetailFragment"
             app:enterAnim="@anim/slide_in_left"
-
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
 

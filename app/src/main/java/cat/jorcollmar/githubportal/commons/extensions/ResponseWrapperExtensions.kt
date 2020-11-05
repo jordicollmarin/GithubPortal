@@ -29,7 +29,6 @@ private fun wrapServerError(resources: Resources, retryCallback: (() -> Unit)?) 
         retryCallback
     )
 
-
 private fun wrapParsingError(resources: Resources, retryCallback: (() -> Unit)?) =
     ErrorWrapper(
         resources.getString(R.string.parsing_error_title),
